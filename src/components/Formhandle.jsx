@@ -8,7 +8,7 @@ const Formhandle = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('aaaaaaa');
+  const [error, setError] = useState('');
 
 
 
@@ -18,9 +18,9 @@ const Formhandle = () => {
         if(name === '') {
             setError('Please fill in all fields')
             toast.error('Please fill in all fields');
-            let x = document.getElementById("name");
-            x.style.border="1px solid #ff00008a"
-            x.style.background="ff000014"
+            // let x = document.getElementById("name");
+            // x.style.border="1px solid #ff00008a"
+            // x.style.background="ff000014"
             return
         }
        
@@ -31,6 +31,7 @@ const Formhandle = () => {
             let x = document.getElementById("password");
             x.style.border="1px solid #ff00008a"
             x.style.background="ff000014"
+
             return;
         }
         if(password !== confirmPassword){
@@ -60,14 +61,7 @@ const Formhandle = () => {
         }
         console.log({name,email,password})
         // toast.success('Form submitted successfully!');
-        toast.promise(
-            saveSettings(),
-             {
-               loading: 'Saving...',
-               success: <b>Form submitted successfully!</b>,
-               error: <b>Failed</b>,
-             }
-           );
+        toast.success('Form Submit Successfully');
 
 
 
@@ -77,6 +71,7 @@ const Formhandle = () => {
         setPassword("");
         setConfirmPassword("");
         setError("");
+
     }
 
     const handleSeePassword=()=>{
@@ -125,18 +120,6 @@ const Formhandle = () => {
                                 onChange={(e)=> setEmail(e.target.value)} value={email}
                             />
                         </div>
-{/* 
-                        <div className="mb-4">
-                            <label htmlFor="Password" className="text-start block text-sm font-medium text-gray-700">
-                                Password
-                            </label>
-                            <input type="password" id="password"
-                                className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                placeholder="Enter your Password"
-                                onChange={(e)=> setPassword(e.target.value)} value={password}
-                            />
-                            <button  onClick={handleSeePassword}><img src={Eye} alt="" /></button>
-                        </div> */}
                         <div className="mb-4 relative">
     <label
         htmlFor="password"
@@ -178,11 +161,12 @@ const Formhandle = () => {
 
                         <div className="flex items-center justify-between mb-4">
                             <div>
+                            Already have an account? 
                                 <a
                                     href="#"
                                     className="text-sm text-indigo-500 hover:underline"
                                 >
-                                    Forgot your password?
+                                    &nbsp;Sign In
                                 </a>
                             </div>
                         </div>
